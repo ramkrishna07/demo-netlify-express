@@ -26,7 +26,7 @@ hbs.registerPartials(partial_path);
 //     res.write('<h1>Hello from another Express.js!</h1>');
 //     res.end();
 // });
-// router.post('/', (req, res) => res.json({ postBody: req.body }));
+
 
 
 
@@ -38,6 +38,7 @@ router.get('/',(req,res)=>{
 router.get('/about',(req,res)=>{
     res.render('about');
 })
+router.post('/', (req, res) => res.json({ postBody: req.body }));
 app.use(bodyParser.json());
 app.use('/.netlify/functions/app', router);  // path must route to lambda
 app.use('/', (req, res) => res.sendFile(path.join(__dirname, '../dist/index.html')));
