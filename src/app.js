@@ -33,10 +33,10 @@ hbs.registerPartials(partial_path);
 
 
 router.get('/',(req,res)=>{
-    res.send('index');
+    res.render('index');
 })
 router.get('/about',(req,res)=>{
-    res.send('about');
+    res.render('about');
 })
 router.post('/', (req, res) => res.json({ postBody: req.body }));
 app.use(bodyParser.json());
