@@ -1,3 +1,3 @@
 [build]
-  command = "npm install hbs-cli; node node_modules/hbs-cli/lib/index.js hbs/ --out ./public"
+  command = "npm install hbs-cli; node node_modules/hbs-cli/lib/index.js hbs/ --out ./"
   functions = "functions"
