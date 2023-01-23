@@ -1,18 +1,18 @@
 'use strict';
 const express = require('express');
 const path = require('path');
-const hbs=require('hbs');
 const serverless = require('serverless-http');
 const app = express();
 const bodyParser = require('body-parser');
 
 const router = express.Router();
-const template_path=path.join(__dirname,"../templates/views");
-const partial_path=path.join(__dirname,"../templates/partials");
+const express_path=path.join(__dirname,"../express");
+console.log(express_path);
+// const partial_path=path.join(__dirname,"../templates/partials");
 
-app.set('view engine','hbs');
-app.set('views',template_path);
-hbs.registerPartials(partial_path);
+// app.set('view engine','hbs');
+// app.set('views',template_path);
+// hbs.registerPartials(partial_path);
 
 // router.get('/', (req, res) => {
 //     res.render('index');
@@ -33,12 +33,12 @@ hbs.registerPartials(partial_path);
 
 
 router.get('/',(req,res)=>{
-    res.render('index');
+    res.sendFile(path.join(express_path+'/index.html'));
 })
 router.get('/about',(req,res)=>{
-    res.render('about');
+    res.sendFile(path.join(express_path+'/about.html'));
 })
-router.post('/', (req, res) => res.json({ postBody: req.body }));
+
 app.use(bodyParser.json());
 app.use('/.netlify/functions/app', router);  // path must route to lambda
 app.use('/', (req, res) => res.sendFile(path.join(__dirname, '../dist/index.html')));
